@@ -35,4 +35,4 @@ build/
 ### Environment ###
 src/main/resources/.env
 src/main/resources/application.properties
-.atlas-credentials.env
+atlas-credentials.env
