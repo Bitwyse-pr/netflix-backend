@@ -3,6 +3,8 @@ name: Build and push docker image.
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'deployment-docs/**'
 
 jobs:
   build-and-push:
