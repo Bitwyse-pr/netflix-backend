@@ -214,15 +214,7 @@ Then I opened `https://<EC2_PUBLIC_IP>:9443`, created the admin user, skipped Ed
 
 ---
 
-### Error 2: The workflow pushed to someone else's registry
-
-**Cause:** The starter workflow hard-coded the original author's ECR registry (a different AWS account in `us-east-2`). My credentials can't push there.
-
-**Fix:** I changed the `docker tag` / `docker push` lines to my own account's ECR URI in `eu-west-1`. When copying a pipeline, always check the account ID, region and repository names.
-
----
-
-### Error 3: The backend needs `application.properties`, but it shouldn't be in Git
+### Error 2: The backend needs `application.properties`, but it shouldn't be in Git
 
 **Cause:** Spring Boot reads the MongoDB URI from `src/main/resources/application.properties`. That file holds a database password, so it's in `.gitignore`. Without it on the runner, the image has no database config.
 
@@ -230,7 +222,7 @@ Then I opened `https://<EC2_PUBLIC_IP>:9443`, created the admin user, skipped Ed
 
 ---
 
-### Error 4: VS Code warns `Context access might be invalid: AWS_ACCESS_KEY_ID`
+### Error 3: VS Code warns `Context access might be invalid: AWS_ACCESS_KEY_ID`
 
 ![Lint warnings](images/04-frontend-workflow-lint-warnings.webp)
 
@@ -240,7 +232,7 @@ Then I opened `https://<EC2_PUBLIC_IP>:9443`, created the admin user, skipped Ed
 
 ---
 
-### Error 5: Frontend loaded but showed no movies
+### Error 4: Frontend loaded but showed no movies
 
 **Cause:** The React app calls the API via `src/api/axiosConfig.js`, and `baseURL` still pointed at the original author's server.
 
@@ -257,7 +249,7 @@ Because React bakes this into the static bundle at **build time**, the frontend 
 
 ---
 
-### Error 6: `docker pull` failed with `no space left on device`
+### Error 5: `docker pull` failed with `no space left on device`
 
 ![No space left on device](images/05-no-space-left-on-device.webp)
 
@@ -295,7 +287,7 @@ failed to extract layer ... /usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm
 
 ---
 
-### Error 7: Portainer wouldn't create the admin user
+### Error 6: Portainer wouldn't create the admin user
 
 ![Password too short](images/11-portainer-password-too-short.webp)
 
