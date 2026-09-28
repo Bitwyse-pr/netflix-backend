@@ -20,7 +20,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-# Login to ECR
+    - name: Recreate application.properties
+      run: |
+        mkdir -p src/main/resources
+        echo "${{ secrets.APP_PROPERTIES }}" > src/main/resources/application.properties
 #=============
     - name: Login to ECR
       id: login-ecr
